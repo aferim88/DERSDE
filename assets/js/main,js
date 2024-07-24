@@ -36,3 +36,27 @@ upArrow.addEventListener("click",()=>{
 
 })
 upArrow.scrollIntoView({ behavior: 'smooth'});
+document.addEventListener('DOMContentLoaded', function () {
+    const subscribeButton = document.getElementById('subscribeButton');
+    const emailInput = document.getElementById('email');
+
+    subscribeButton.addEventListener('click', function (event) {
+        event.preventDefault();
+        const email = emailInput.value.trim();
+
+        if (validateEmail(email)) {
+            alert('Thank you for subscribing!');
+            // Here you can add code to handle the subscription, e.g., send the email to your server
+            emailInput.value = '';
+        } else {
+            alert('Please enter a valid email address.');
+        }
+    });
+
+    function validateEmail(email) {
+        // Simple email validation regex
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
+    }
+});
+
